@@ -1,0 +1,74 @@
+﻿@model GetOrganized.Models.Topic
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $('#Color').loads({
+            flat: false,
+            enableAlpha: false,
+            layout: 'rgbhex',
+            color: '#ffffff',
+            compactLayout: true,
+            onLoaded: function(ev) {
+                var hex = $(ev.el).getColor("hex", true);
+                $(ev.el).css('background-color', '#' + hex);
+                $(ev.el).val('#' + hex);
+            },
+            onHide: function(ev) {
+            },
+            onChange: function (ev) {
+                $(ev.el).css('background-color', '#' + ev.hex);
+                $(ev.el).val('#' + ev.hex);
+            },
+            onSubmit: function(ev) {
+                $(ev.el).hides();
+            }
+        });
+    });
+</script>
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Topic</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label col-md-2">
+                @Html.LabelFor(model => model.Color)
+            </div>
+            <div class="editor-field col-md-10">
+                @Html.TextBoxFor(model => model.Color)
+                @Html.ValidationMessageFor(model => model.Color)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
