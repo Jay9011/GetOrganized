@@ -28,6 +28,12 @@ namespace GetOrganized.Controllers
         // GET: /Thought/Create
         public ActionResult Create()
         {
+            ViewData["Topics"] = Topic.Topics.ConvertAll(topic =>
+                new SelectListItem
+                {
+                    Text = topic.Name,
+                    Value = topic.Id.ToString()
+                });
             return View();
         }
 

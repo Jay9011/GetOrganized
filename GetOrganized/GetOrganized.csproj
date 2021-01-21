@@ -109,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Thought\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -204,6 +203,7 @@
     <Content Include="Views\Todo\Edit.cshtml" />
     <Content Include="Views\Topic\Index.cshtml" />
     <Content Include="Views\Topic\Create.cshtml" />
+    <Content Include="Views\Thought\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
